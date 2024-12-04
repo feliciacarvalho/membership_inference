@@ -4,7 +4,7 @@ from preprocess.preprocessing import preprocess_data
 from models.target_model import train_target_model
 from models.shadow_model import train_multiple_shadow_models
 from models.attack_model import generate_attack_data_with_in_out, train_attack_model, visualizar_conjunto_dados_ataque, salvar_predicoes_csv
-
+from XAI.shap import explain_attack_model_with_shap
 
 DATA_PATH = "data/adult_clean.csv"
 TARGET_COL = "income"
@@ -30,7 +30,8 @@ def main():
         print("1. Treinar o modelo alvo")
         print("2. Treinar modelos shadow")
         print("3. Treinar o modelo de ataque")
-        print("4. Sair")
+        print("4. Eexplicações com SHAP")
+        print("5. Sair")
 
         option = input("Digite o número da opção desejada: ")
 
@@ -68,8 +69,9 @@ def main():
                     print("Modelo de ataque treinado e salvo com sucesso!")
 
                     salvar_predicoes_csv(attack_model, shadow_models, X_train, X_test, y_train, y_test, num_shadow_models=NUM_SHADOW_MODELS)
-
         elif option == '4':
+            explain_attack_model_with_shap()
+        elif option == '5':
             print("Saindo do programa...")
             break
         else:

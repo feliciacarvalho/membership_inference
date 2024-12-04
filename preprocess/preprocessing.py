@@ -74,7 +74,7 @@ def prepare_training_data(dataset, target_col, test_size=0.2, val_size=0.2, rand
 
 ### --------------------------------------------------------------------------------------------
 
-def prepare_shadow_data(shadow_dataset, target_col, test_size=0.2, random_state=1):
+def prepare_shadow_data(shadow_dataset, target_col, test_size=0.2, random_state=32):
     """
     Divide o dataset shadow em treino e teste.
     """
